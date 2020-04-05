@@ -6,7 +6,7 @@
 ## 快速上手
 1. 克隆此仓库
 ```commandline
-git clone https://github.com/yyywang/yinrui
+git clone https://github.com/yyywang/yinrui.git
 cd yinrui
 ```
 2. 安装依赖包
@@ -24,7 +24,7 @@ python starter.py
 ```
 
 ## 生产环境
-1. 将数据 `xxx.xlsx` 放入 `/data/production` 文件夹中 
+1. 将数据 `xxx.xlsx` 放入 `/data/production/` 文件夹中 
 2. 在 `starter.py` 中修改数据文件路径
 ```python
 file_path = './data/production/xxx.xlsx'      # 数据文件路径，仅支持 xlsx 格式
