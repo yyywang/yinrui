@@ -22,3 +22,14 @@ pipenv shell
 ```commandline
 python starter.py
 ```
+
+## 生产环境
+1. 将数据 `xxx.xlsx` 放入 `/data/production` 文件夹中 
+2. 在 `starter.py` 中修改数据文件路径
+```python
+file_path = './data/production/xxx.xlsx'      # 数据文件路径，仅支持 xlsx 格式
+```
+3. 运行
+```commandline
+python starter.py
+```
