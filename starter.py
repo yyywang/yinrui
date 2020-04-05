@@ -6,6 +6,7 @@ from config.config import Config
 from program.draw_table import draw_bar_year_category, show_all_chart, draw_line_year_category, draw_bar_country_movie, \
     draw_pie_country_movie, draw_bar_category_average_score
 from program.get_data import DataObject
+from program.utils import support_zh
 
 if __name__ == '__main__':
     file_path = './data/test/data2000.xlsx'      # 数据文件路径，仅支持 xlsx 格式
@@ -18,4 +19,5 @@ if __name__ == '__main__':
     draw_pie_country_movie(data_obj)                # 各制片国家/地区电影数量饼图
     draw_bar_category_average_score(data_obj)       # 不同类型电影平均分直方图
 
+    support_zh()                                    # 支持显示中文
     show_all_chart()                                # 绘制所有图表

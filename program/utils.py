@@ -3,6 +3,8 @@
   Created by Wesley on 2020/4/5.
 """
 import matplotlib.pyplot as plt
+from pylab import mpl
+
 
 def progress_bar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 50, fill = '#', printEnd = "\r"):
     """
@@ -29,12 +31,13 @@ def progress_bar (iteration, total, prefix = '', suffix = '', decimals = 1, leng
     if iteration == total:
         print()
 
-def zip_sort(names, values, reverse=False):
+def zip_sort(names, values, reverse=False, count=None):
     """
     打包两个数据并排序返回
     :param names: 
     :param values: 
     :param reverse: 是否排序反转
+    :param count: 数量
     :return: 
     """
     data = list()
@@ -45,11 +48,11 @@ def zip_sort(names, values, reverse=False):
             value=values[i]
         ))
     data = sorted(data, key=lambda item: item['value'], reverse=reverse)
-    resp_names = [item['name'] for item in data]
-    resp_values = [item['value'] for item in data]
+    resp_names = [item['name'] for item in data] if count is None else [item['name'] for item in data][:10]
+    resp_values = [item['value'] for item in data] if count is None else [item['value'] for item in data][:10]
     return dict(names=resp_names, values=resp_values)
 
-def add_column_label(data, decimals=0):
+def add_column_label(data, x=0.5, y=-0.3, decimals=0):
     """
     为图每一栏添加 label
     :param data: 
@@ -57,4 +60,17 @@ def add_column_label(data, decimals=0):
     :return: 
     """
     for idx, item in enumerate(data):
-        plt.text(item + 0.5, idx-0.3, str(round(item, decimals)), color='black')
+        plt.text(item + x, idx + y, str(round(item, decimals)), color='black')
+
+def hide_border():
+    """去掉表格边框"""
+    ax = plt.gca()
+    ax.spines['top'].set_visible(False)  # 去掉上边框
+    ax.spines['bottom'].set_visible(False)  # 去掉下边框
+    ax.spines['left'].set_visible(False)  # 去掉左边框
+    ax.spines['right'].set_visible(False)  # 去掉右边框
+
+def support_zh():
+    """使 matplotlib 支持中文显示"""
+    mpl.rcParams['font.sans-serif'] = ['FangSong']  # 指定默认字体
+    mpl.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显示为方块的问题
